@@ -8,7 +8,6 @@ const app = new App({
   // ソケットモードではポートをリッスンしませんが、アプリを OAuth フローに対応させる場合、
   // 何らかのポートをリッスンする必要があります
   port: process.env.PORT || 3000
-});
   customRoutes: [
     {
       path: '/health-check',
