@@ -24,10 +24,12 @@ const app = new App({
 // "hello" を含むメッセージをリッスンします
 app.message('(https://(x\.com|twitter\.com)[^\s]+)', async ({ message, say }) => {
   const regex = /(x\.com|twitter\.com)/;
-  let posturl = message;
-  posturl.replace(regex, 'fixtwitter.com');
-  // イベントがトリガーされたチャンネルに say() でメッセージを送信します
-  await say(`${posturl}`);
+  try {
+    let posturl = message.text;
+    await say(posturl.replace(regex, 'fixtwitter.com'));
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 app.event('app_mention', async ({ event, say }) => {
