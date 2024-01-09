@@ -26,7 +26,7 @@ app.message('(https://(x\.com|twitter\.com)[^\s]+)', async ({ message, say }) =>
   const regex = /(x\.com|twitter\.com)/;
   try {
     let posturl = message.text;
-    await say(posturl.replace(regex, 'fixtwitter.com'));
+    await say(posturl.replace(regex, 'fxtwitter.com'));
   } catch (error) {
     console.error(error);
   }
@@ -36,7 +36,7 @@ app.event('app_mention', async ({ event, say }) => {
   const regex = /(x\.com|twitter\.com)/;
   try {
     let posturl = event.text;
-    await say(posturl.replace(regex, 'fixtwitter.com'));
+    await say(posturl.replace(regex, 'fxtwitter.com'));
   } catch (error) {
     console.error(error);
   }
