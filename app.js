@@ -34,8 +34,7 @@ app.event('app_mention', async ({ event, say }) => {
   const regex = /(x\.com|twitter\.com)/;
   try {
     let posturl = event.text;
-    posturl.replace(regex, 'fixtwitter.com');
-    await say(`${posturl}`);
+    await say(posturl.replace(regex, 'fixtwitter.com'));
   } catch (error) {
     console.error(error);
   }
