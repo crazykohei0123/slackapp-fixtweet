@@ -30,6 +30,17 @@ app.message('(https://(x\.com|twitter\.com)[^\s]+)', async ({ message, say }) =>
   await say(`${posturl}`);
 });
 
+app.event('app_mention', async ({ event, say }) => {
+  const regex = /(x\.com|twitter\.com)/;
+  try {
+    let posturl = event.text;
+    posturl.replace(regex, 'fixtwitter.com');
+    await say(`${posturl}`);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 (async () => {
   // アプリを起動します
   await app.start();
