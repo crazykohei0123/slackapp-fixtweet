@@ -22,14 +22,16 @@ const app = new App({
 });
 
 // "hello" を含むメッセージをリッスンします
-app.message('hello', async ({ message, say }) => {
+app.message('(https://(x\.com|twitter\.com)[^\s]+)', async ({ message, say }) => {
+  const regex = /(x\.com|twitter\.com)/;
+  let posturl = message;
+  posturl.replace(regex, 'fixtwitter.com');
   // イベントがトリガーされたチャンネルに say() でメッセージを送信します
-  await say(`Hey there <@${message.user}>!`);
+  await say(`${posturl}`);
 });
 
 (async () => {
   // アプリを起動します
   await app.start();
-
   console.log('⚡️ Bolt app is running!');
 })();
